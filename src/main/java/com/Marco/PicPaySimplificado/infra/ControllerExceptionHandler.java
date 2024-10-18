@@ -22,7 +22,7 @@ public class ControllerExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity threatGeneralExceptions(EntityNotFoundException exception) {
+    public ResponseEntity threatGeneralExceptions(Exception exception) {
         ExeceptionDTO execeptionDTO = new ExeceptionDTO(exception.getMessage(), "500");
         return ResponseEntity.internalServerError().body(execeptionDTO);
     }
