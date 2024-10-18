@@ -25,8 +25,8 @@ public class UserService {
         }
     }
 
-    public Optional<User> findUserById(Long id) {
-        return this.userRepository.findById(id);
+    public User findUserById(Long id) throws Exception{
+        return this.userRepository.findById(id).orElseThrow();
     }
 
     public void saveUser(User user) {
