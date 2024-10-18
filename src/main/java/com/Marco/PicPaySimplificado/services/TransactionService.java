@@ -46,6 +46,11 @@ public class TransactionService {
         transaction1.setTimestamp(LocalDateTime.now());
 
         sender.setBalance(sender.getBalance().subtract(transaction.value()));
+        receiver.setBalance(receiver.getBalance().add(transaction.value()));
+
+        this.transactionRepository.save(new Transaction());
+        this.userService.saveUser(sender);
+        this.userService.saveUser(receiver);
     }
 
     public boolean authorizeTransaction(User sender, BigDecimal value) {
